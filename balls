@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Automation Consulting | Faster Ops, More Sales</title>
+  <meta name="description" content="We help businesses automate sales, support, and operations using AI workflows (ChatGPT, automations, CRM integrations)." />
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,0.06);
+      --panel2: rgba(255,255,255,0.08);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.7);
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 24px 80px rgba(0,0,0,0.45);
+      --radius: 18px;
+      --radius2: 26px;
+      --accent: #7c5cff;
+      --accent2: #23c4ff;
+      --ok: #2fe59e;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 700px at 15% 0%, rgba(124,92,255,0.22), transparent 60%),
+                  radial-gradient(900px 600px at 85% 10%, rgba(35,196,255,0.18), transparent 55%),
+                  radial-gradient(900px 700px at 50% 100%, rgba(47,229,158,0.12), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 18px 90px; }
+
+    /* Top bar */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.25);
+      position: sticky;
+      top: 12px;
+      z-index: 10;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .logo {
+      width: 34px; height: 34px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 14px 40px rgba(124,92,255,0.25);
+    }
+    .brand b { letter-spacing: 0.3px; }
+    .links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .links a {
+      padding: 10px 12px;
+      border-radius: 12px;
+      color: var(--muted);
+    }
+    .links a:hover { background: rgba(255,255,255,0.05); color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      cursor: pointer;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+      user-select: none;
+      font-weight: 650;
+    }
+    .btn:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.18); }
+    .btn:active { transform: translateY(1px); }
+
+    .btnPrimary {
+      background: linear-gradient(135deg, rgba(124,92,255,0.95), rgba(35,196,255,0.85));
+      border-color: rgba(255,255,255,0.16);
+      box-shadow: 0 18px 60px rgba(124,92,255,0.2);
+    }
+    .btnPrimary:hover { filter: brightness(1.05); }
+
+    /* Hero */
+    .hero {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 0 6px rgba(47,229,158,0.12);
+    }
+
+    h1 {
+      margin: 14px 0 10px;
+      font-size: clamp(30px, 4vw, 50px);
+      line-height: 1.1;
+      letter-spacing: -0.7px;
+    }
+    .sub {
+      color: var(--muted);
+      font-size: 16px;
+      margin: 0 0 16px;
+      max-width: 65ch;
+    }
+
+    .pillRow { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 18px; }
+    .pill {
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.04);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .ctaRow { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+    .mini { color: var(--muted); font-size: 13px; margin-top: 10px; }
+
+    /* Right panel */
+    .stack { display: grid; gap: 12px; }
+    .stat {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.05);
+      padding: 14px;
+    }
+    .stat b { font-size: 18px; }
+    .stat p { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+
+    /* Sections */
+    section { margin-top: 18px; }
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 900px) {
+      .grid3 { grid-template-columns: 1fr; }
+    }
+    .service h3 { margin: 0 0 8px; }
+    .service p { margin: 0; color: var(--muted); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 1000px) {
+      .steps { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .steps { grid-template-columns: 1fr; }
+    }
+    .step b { display: inline-block; margin-bottom: 6px; }
+    .step p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    /* Contact form */
+    label { display: block; font-size: 13px; color: var(--muted); margin: 10px 0 6px; }
+    input, textarea, select {
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      outline: none;
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    input:focus, textarea:focus, select:focus { border-color: rgba(124,92,255,0.45); }
+
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 700px) { .two { grid-template-columns: 1fr; } }
+
+    .foot {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .hr { height: 1px; background: rgba(255,255,255,0.10); margin: 18px 0; border: 0; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 10px; border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.78);
+      font-size: 12px; font-weight: 650;
+    }
+
+    .tiny { font-size: 12px; color: var(--muted); }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <b>Hybrid AI Consulting</b><br/>
+          <span class="tiny">Automation • Systems • ROI</span>
+        </div>
+      </div>
+
+      <div class="links">
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btnPrimary" href="#contact">Get a free plan</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="card">
+        <span class="kicker"><span class="dot"></span> Build AI systems that save time & close more deals</span>
+
+        <h1>We automate sales, support, and ops using AI — fast.</h1>
+        <p class="sub">
+          If your team is drowning in DMs, emails, follow-ups, and admin work, we build simple AI workflows
+          (ChatGPT + automations + CRM) so your business runs smoother and responds faster.
+        </p>
+
+        <div class="pillRow" aria-label="Capabilities">
+          <span class="pill">Lead intake → CRM</span>
+          <span class="pill">AI chat + FAQs</span>
+          <span class="pill">Appointment scheduling</span>
+          <span class="pill">Auto follow-ups</span>
+          <span class="pill">Call/message summaries</span>
+          <span class="pill">SaaS integrations</span>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="#contact">Request a free workflow plan</a>
+          <a class="btn" href="#services">See what we build</a>
+        </div>
+
+        <p class="mini">
+          Hybrid team coverage: <span class="badge">Houston</span> <span class="badge">Jacksonville</span> <span class="badge">New York City</span>
+          • Remote delivery worldwide.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="stack">
+          <div class="stat">
+            <b>What you get</b>
+            <p>Working automations + documentation + handoff. No fluff. No “AI strategy deck” that dies in a folder.</p>
+          </div>
+          <div class="stat">
+            <b>Tools we use</b>
+            <p>ChatGPT • OpenAI API • Zapier • Make • CRMs • Google Workspace • Slack • Webhooks • Forms</p>
+          </div>
+          <div class="stat">
+            <b>Best for</b>
+            <p>SMBs that want faster response times, less admin work, and consistent follow-up without hiring more staff.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="services" class="card">
+      <h2 style="margin:0 0 10px;">Services</h2>
+      <p class="sub" style="margin-top:0;">Pick one, or let us recommend the best setup after a quick call.</p>
+
+      <div class="grid3">
+        <div class="service card" style="box-shadow:none;">
+          <h3>AI Sales Automation</h3>
+          <p>Lead capture, qualification, CRM updates, follow-up sequences, and “next step” reminders—automated.</p>
+        </div>
+        <div class="service card" style="box-shadow:none;">
+          <h3>AI Customer Support</h3>
+          <p>FAQ bot + ticket triage + smart drafts for replies. Faster response time without losing quality.</p>
+        </div>
+        <div class="service card" style="box-shadow:none;">
+          <h3>Ops & Workflow Automation</h3>
+          <p>Remove repetitive tasks: file handling, summaries, data entry, notifications, and approvals.</p>
+        </div>
+      </div>
+
+      <hr class="hr" />
+
+      <div class="grid3">
+        <div class="service card" style="box-shadow:none;">
+          <h3>AI Chatbots (Real Use)</h3>
+          <p>Not gimmicks. We build bots that pull from your docs and handle real customer questions.</p>
+        </div>
+        <div class="service card" style="box-shadow:none;">
+          <h3>Integrations</h3>
+          <p>Connect your tools: CRM, calendars, forms, email, Slack, SMS, payments, and more.</p>
+        </div>
+        <div class="service card" style="box-shadow:none;">
+          <h3>Maintenance & Improvements</h3>
+          <p>Monthly monitoring, prompt tuning, automation reliability upgrades, and new workflows as you grow.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="card">
+      <h2 style="margin:0 0 10px;">How it works</h2>
+      <p class="sub" style="margin-top:0;">A simple process so you get results fast.</p>
+
+      <div class="steps">
+        <div class="step card" style="box-shadow:none;">
+          <b>1) Quick audit (30 min)</b>
+          <p>We map your current process and pick the highest-ROI automation first.</p>
+        </div>
+        <div class="step card" style="box-shadow:none;">
+          <b>2) Build & connect</b>
+          <p>We implement the workflow using your tools (CRM, email, calendar, etc.).</p>
+        </div>
+        <div class="step card" style="box-shadow:none;">
+          <b>3) Test & harden</b>
+          <p>Edge cases, fail-safes, logging, and clear handoff docs so it doesn’t break.</p>
+        </div>
+        <div class="step card" style="box-shadow:none;">
+          <b>4) Launch & improve</b>
+          <p>We deploy, train your team, then optimize based on real usage.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="card">
+      <h2 style="margin:0 0 10px;">Simple pricing</h2>
+      <p class="sub" style="margin-top:0;">Most clients start with one workflow, then scale into a full system.</p>
+
+      <div class="grid3">
+        <div class="card" style="box-shadow:none;">
+          <h3 style="margin:0 0 8px;">Starter Workflow</h3>
+          <p class="tiny">Best for 1 automation (lead intake, support bot, follow-ups)</p>
+          <p style="font-size:26px; margin:10px 0 0; font-weight:800;">$750–$1,500</p>
+          <p class="tiny" style="margin:6px 0 0;">Fixed price • 3–7 days</p>
+        </div>
+        <div class="card" style="box-shadow:none; border-color: rgba(124,92,255,0.35);">
+          <h3 style="margin:0 0 8px;">Growth System</h3>
+          <p class="tiny">2–4 workflows + CRM integration + reporting</p>
+          <p style="font-size:26px; margin:10px 0 0; font-weight:800;">$2,500–$6,000</p>
+          <p class="tiny" style="margin:6px 0 0;">Fixed price • 2–4 weeks</p>
+        </div>
+        <div class="card" style="box-shadow:none;">
+          <h3 style="margin:0 0 8px;">Monthly Retainer</h3>
+          <p class="tiny">Monitoring, improvements, new workflows</p>
+          <p style="font-size:26px; margin:10px 0 0; font-weight:800;">$500–$2,500/mo</p>
+          <p class="tiny" style="margin:6px 0 0;">Cancel anytime</p>
+        </div>
+      </div>
+
+      <p class="tiny" style="margin-top:12px;">
+        *Pricing varies by tools, volume, and complexity. You’ll get a clear quote after the quick audit.
+      </p>
+    </section>
+
+    <section id="contact" class="card">
+      <h2 style="margin:0 0 10px;">Contact</h2>
+      <p class="sub" style="margin-top:0;">
+        Tell us what you want to automate. We’ll reply with a free mini-plan and a ballpark quote.
+      </p>
+
+      <form id="contactForm">
+        <div class="two">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required />
+          </div>
+        </div>
+
+        <div class="two">
+          <div>
+            <label for="company">Company</label>
+            <input id="company" name="company" placeholder="Business name (optional)" />
+          </div>
+          <div>
+            <label for="goal">Main goal</label>
+            <select id="goal" name="goal">
+              <option>Automate lead intake & follow-ups</option>
+              <option>Customer support automation</option>
+              <option>Operations / admin automation</option>
+              <option>Chatbot / knowledge base</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="message">What’s the problem you want solved?</label>
+        <textarea id="message" name="message" placeholder="Example: We get 50 leads/week from Instagram + website, but we miss follow-ups. We need lead capture → CRM → auto follow-up + booking."></textarea>
+
+        <div class="ctaRow" style="margin-top: 12px;">
+          <button class="btn btnPrimary" type="submit">Send request</button>
+          <a class="btn" id="emailLink" href="#">Or email us</a>
+        </div>
+
+        <p class="tiny" style="margin-top:10px;">
+          We’ll reply within 1 business day. If you prefer, include a link to your website/CRM tool.
+        </p>
+      </form>
+    </section>
+
+    <div class="foot">
+      © <span id="year"></span> Hybrid AI Consulting • Houston • Jacksonville • NYC • Remote worldwide
+    </div>
+  </div>
+
+  <script>
+    // Update year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Customize your email here:
+    const BUSINESS_EMAIL = "yourname@yourdomain.com"; // <-- change this
+    const emailLink = document.getElementById("emailLink");
+    emailLink.href = `mailto:${BUSINESS_EMAIL}?subject=${encodeURIComponent("AI Automation Inquiry")}`;
+    emailLink.textContent = "Or email us";
+
+    // Simple mailto-based form submit (no backend needed)
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const company = document.getElementById("company").value.trim();
+      const goal = document.getElementById("goal").value;
+      const message = document.getElementById("message").value.trim();
+
+      const subject = `AI Automation Inquiry — ${name}${company ? " (" + company + ")" : ""}`;
+      const body =
+`Name: ${name}
+Email: ${email}
+Company: ${company || "—"}
+Goal: ${goal}
+
+Details:
+${message || "—"}`;
+
+      window.location.href = `mailto:${BUSINESS_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</body>
+</html>
